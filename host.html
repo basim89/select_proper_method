@@ -1,1 +1,236 @@
-3
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار معلوماتك</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <script src="quiz.js" defer></script> <!-- Include your JavaScript file -->
+    <style>
+        /* Include your CSS here */
+        body {
+            font-family: 'خط الرقعة', ; 
+            background: url('images/background.png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            height: 100vh;
+            margin: 0;
+        }
+        .title {
+            font-family: 'خط الرقعة',;
+            src: url('font/ArefRuqaa-Bold-1.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-size: 3em; 
+            color: #ff4500; 
+            margin-bottom: 20px; 
+            background-color: #ffd700; 
+            padding: 10px 20px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+        }
+        .game-container {
+            text-align: center;
+            background-color: rgba(255, 235, 205, 0.9); 
+            border: 5px solid #ff69b4;
+            border-radius: 25px;
+            padding: 20px;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out; 
+        }
+        .question-box {
+            background-color: #fffacd; 
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .character-img {
+            max-width: 150px; 
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.8em;
+            color: #008b8b; 
+        }
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .choice-btn {
+            background-color: #32cd32; 
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .choice-btn:hover {
+            transform: scale(1.1);
+        }
+        .feedback {
+            font-size: 1.5em;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .progress {
+            height: 20px;
+            background-color: #4caf50; /* Green */
+            width: 0;
+            transition: width 1s ease; /* Animate width change */
+        }
+        .counters {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1 class="title">عداد أ/سعاد الرحيلي</h1>
+        
+        <!-- Question 1 -->
+        <div id="question1" class="question-box">
+            <img src="images/saad.png" alt="سعد" class="character-img">
+            <div class="question-text">جمع سعد 711، صدفة وجمع سعود 25 صدفة زيادة على سعد ، فكم صدفة جمع سعود؟</div>
+            <div class="choices">
+                <button class="choice-btn" onclick="checkAnswer(1, 'جمع', document.getElementById('feedback1'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">جمع</button>
+                <button class="choice-btn" onclick="checkAnswer(1, 'طرح', document.getElementById('feedback1'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">طرح</button>
+            </div>
+            <div id="feedback1" class="feedback"></div>
+        </div>
+
+        <!-- Question 2 -->
+        <div id="question2" class="question-box" style="display: none;">
+            <img src="images/مدير.png" alt="مدير المدرسة" class="character-img">
+            <div class="question-text">وزع مدير المدرسة 677 بطاقة دعوة لحضور الحفل الختامي في المدرسة ، فإذا كان عدد مقاعد الحفل 800 مقعد، فما عدد المقاد المتبقية؟</div>
+            <div class="choices">
+                <button class="choice-btn" onclick="checkAnswer(2, '123', document.getElementById('feedback2'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">123</button>
+                <button class="choice-btn" onclick="checkAnswer(2, '100', document.getElementById('feedback2'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">100</button>
+            </div>
+            <div id="feedback2" class="feedback"></div>
+        </div>
+
+        <!-- Question 3 -->
+        <div id="question3" class="question-box" style="display: none;">
+            <img src="images/sara.png" alt="سارة" class="character-img">
+            <div class="question-text">تحتاج سارة 225 طابع، تذكاري جمعت حتى الآن 147، طابعًا فكم طابعًا ينقصها؟</div>
+            <div class="choices">
+                <button class="choice-btn" onclick="checkAnswer(3, '78', document.getElementById('feedback3'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">78</button>
+                <button class="choice-btn" onclick="checkAnswer(3, '80', document.getElementById('feedback3'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">80</button>
+            </div>
+            <div id="feedback3" class="feedback"></div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div id="progress" class="progress"></div>
+        </div>
+        
+        <!-- Counters -->
+        <div class="counters">
+            <p>الإجابات الصحيحة: <span id="correctCount">0</span></p>
+            <p>الإجابات الخاطئة: <span id="wrongCount">0</span></p>
+        </div>
+    </div>
+
+    <audio id="correctSound" src="sounds/correct.mp3"></audio>
+    <audio id="wrongSound" src="sounds/wrong.mp3"></audio>
+
+    <script>
+        let correctAnswers = 0;
+        let wrongAnswers = 0;
+
+        function checkAnswer(questionNumber, choice, feedbackElement, progressElement, correctCountElement, wrongCountElement) {
+            let isCorrect = false;
+
+            // Check the correct answer based on question number
+            if (questionNumber === 1 && choice === 'جمع') {
+                isCorrect = true;
+            } else if (questionNumber === 2 && choice === '123') {
+                isCorrect = true;
+            } else if (questionNumber === 3 && choice === '78') {
+                isCorrect = true;
+            }
+
+            // Provide feedback
+            if (isCorrect) {
+                document.getElementById('correctSound').play();
+                feedbackElement.textContent = "صحيح!";
+                feedbackElement.style.color = "green"; 
+                correctAnswers++;
+                correctCountElement.textContent = correctAnswers; 
+
+                // Animate progress bar
+                let newWidth = (correctAnswers / 3) * 100; 
+                progressElement.style.width = newWidth + '%'; 
+                progressElement.style.transition = 'width 1s ease'; 
+
+                // Move to the next question
+                setTimeout(() => {
+                    if (questionNumber < 3) {
+                        document.getElementById(`question${questionNumber}`).style.display = "none";
+                        document.getElementById(`question${questionNumber + 1}`).style.display = "block";
+                    } else {
+                        showFinalResults();
+                    }
+                }, 2000);
+            } else {
+                document.getElementById('wrongSound').play();
+                feedbackElement.textContent = "خاطئ!";
+                feedbackElement.style.color = "red"; 
+                wrongAnswers++;
+                wrongCountElement.textContent = wrongAnswers; 
+            }
+            feedbackElement.style.opacity = 1; 
+
+            // Hide feedback after a short delay
+            setTimeout(() => {
+                feedbackElement.style.opacity = 0; 
+            }, 2000);
+        }
+
+        function showFinalResults() {
+            // Hide all questions
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`question${i}`).style.display = "none";
+            }
+
+            // Display results
+            let resultsDiv = document.createElement('div');
+            resultsDiv.className = 'results';
+            resultsDiv.innerHTML = `
+                <h2>انتهى الاختبار!</h2>
+                <p>الإجابات الصحيحة: ${correctAnswers}</p>
+                <p>الإجابات الخاطئة: ${wrongAnswers}</p>
+            `;
+            document.querySelector('.game-container').appendChild(resultsDiv);
+        }
+
+        // Show the first question
+        window.onload = () => {
+            document.getElementById('question1').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
