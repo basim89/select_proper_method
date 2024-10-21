@@ -1,90 +1,69 @@
+let currentQuestionIndex = 0;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+
 const questions = [
     {
-        img: "images/مدير.png", // Use relative path
-        text: 'وزعت المدرسة 677 بطاقة دعوة لحضور الحفل الختامي في المدرسة، فإذا كان عدد مقاعد الحفل 800 مقعد، فما عدد المقاعد المتبقية؟',
-        correct: 'طرح'
+        question: "ماذا يكون 5 + 3؟",
+        correctAnswer: "جمع",
+        characterImg: "C:/Users/bloma/Desktop/select_proper_method/images/school.png"
     },
     {
-        img: "images/saad.png", // Use relative path
-        text: 'جمع سعد 711 صدفة، وجمع سعود 25 صدفة زيادة على سعد، فكم صدفة جمع سعود؟',
-        correct: 'جمع'
+        question: "ماذا يكون 8 - 4؟",
+        correctAnswer: "طرح",
+        characterImg: "C:/Users/bloma/Desktop/select_proper_method/images/saad.png"
     },
     {
-        img: "images/sara.png", // Use relative path
-        text: 'تحتاج سارة 225 طابع تذكاري جمعت حتى الآن 147 طابعًا، فكم طابعًا ينقصها؟',
-        correct: 'طرح'
+        question: "ماذا يكون 10 - 6؟",
+        correctAnswer: "طرح",
+        characterImg: "C:/Users/bloma/Desktop/select_proper_method/images/sara.png"
     }
 ];
 
-let currentQuestion = 0;
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadQuestion();
-
-    document.getElementById('choice1').addEventListener('click', () => checkAnswer('جمع'));
-    document.getElementById('choice2').addEventListener('click', () => checkAnswer('طرح'));
-    document.getElementById('play-again').addEventListener('click', () => {
-        currentQuestion = 0;
-        document.getElementById('game-end').classList.add('hidden');
-        loadQuestion();
-    });
-});
-
 function loadQuestion() {
-    const question = questions[currentQuestion];
-    const questionBox = document.querySelector('.question-box');
-    
-    // Slide out old question
-    questionBox.classList.remove('slideIn');
-    questionBox.classList.add('slideOut');
-
-    setTimeout(() => {
-        // Update question content after the animation
-        document.getElementById('character-img').src = question.img;
-        document.getElementById('question-text').textContent = question.text;
-
-        // Slide in new question
-        questionBox.classList.remove('slideOut');
-        questionBox.classList.add('slideIn');
-        
-        // Clear feedback message
-        document.getElementById('feedback').textContent = '';
-        document.getElementById('feedback').style.opacity = 0; // Set opacity to 0
-    }, 500); // Delay matches animation duration
+    const currentQuestion = questions[currentQuestionIndex];
+    document.getElementById('question-text').innerText = currentQuestion.question;
+    document.getElementById('character-img').src = currentQuestion.characterImg;
+    document.getElementById('feedback').innerText = ''; // Clear feedback
+    updateProgressBar();
 }
 
-function checkAnswer(answer) {
-    const correctSound = document.getElementById('correct-sound');
-    const wrongSound = document.getElementById('wrong-sound');
-    const feedback = document.getElementById('feedback');
-    
-    if (answer === questions[currentQuestion].correct) {
-        correctSound.play();
-        feedback.textContent = 'إجابة صحيحة!'; // Display feedback
-        feedback.style.color = 'green'; // Set feedback color
+function checkAnswer(selectedAnswer) {
+    const currentQuestion = questions[currentQuestionIndex];
+    const feedbackElement = document.getElementById('feedback');
+
+    if (selectedAnswer === currentQuestion.correctAnswer) {
+        correctAnswers++;
+        feedbackElement.innerText = "اجابة صحيحيخة";
+        feedbackElement.style.color = "green";
+        document.getElementById("correct-sound").play();
     } else {
-        wrongSound.play();
-        feedback.textContent = 'إجابة خاطئة!'; // Display feedback
-        feedback.style.color = 'red'; // Set feedback color
+        wrongAnswers++;
+        feedbackElement.innerText = "اجابة خاطة";
+        feedbackElement.style.color = "red";
+        document.getElementById("wrong-sound").play();
     }
 
-    feedback.style.opacity = 1; // Set opacity to 1 for visibility
-    feedback.classList.remove('fadeOut'); // Ensure fadeOut class is removed
-
-    // Fade out the feedback after 1.5 seconds
     setTimeout(() => {
-        feedback.classList.add('fadeOut'); // Add fadeOut class
-        feedback.style.opacity = 0; // Fade out the feedback
-
-        // Wait for 1 second before loading the next question
-        setTimeout(() => {
-            currentQuestion++;
-            if (currentQuestion < questions.length) {
-                loadQuestion();
-            } else {
-                // Show game end message
-                document.getElementById('game-end').classList.remove('hidden');
-            }
-        }, 1000); // Delay before loading the next question
-    }, 1500); // Delay for feedback visibility
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            loadQuestion();
+        } else {
+            endGame();
+        }
+    }, 1000); // Wait 1 second before loading the next question
 }
+
+function endGame() {
+    document.querySelector('.game-container').classList.add('hidden');
+    const gameEndElement = document.getElementById('game-end');
+    gameEndElement.classList.remove('hidden');
+    gameEndElement.innerHTML += `<p>إجابات صحيحة: ${correctAnswers}</p>`;
+    gameEndElement.innerHTML += `<p>إجابات خاطئة: ${wrongAnswers}</p>`;
+}
+
+function updateProgressBar() {
+    // Logic for updating progress bar can be added here
+}
+
+document.addEventListener('DOMContentLoaded', loadQuestion);

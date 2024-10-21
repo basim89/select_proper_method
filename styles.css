@@ -3,7 +3,7 @@ body {
     background: url('images/background.png') no-repeat center center fixed;
     background-size: cover;
     display: flex;
-    flex-direction: column; /* Added for vertical alignment */
+    flex-direction: column; /* Vertical alignment */
     align-items: center; /* Center content */
     height: 100vh;
     margin: 0;
@@ -13,8 +13,8 @@ body {
     font-size: 3em; /* Increased font size */
     color: #ff4500; /* Title color */
     margin-bottom: 20px; /* Spacing below the title */
-    background-color: #ffd700; /* Gold background color */
-    padding: 10px 20px; /* Padding around the text */
+    background-color: #ffd700; /* Gold background */
+    padding: 10px 20px; /* Padding around text */
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
     font-family: 'Traditional Arabic', 'Cairo', sans-serif; /* Use خط الرقعة or fallback */
@@ -23,111 +23,109 @@ body {
 .game-container {
     text-align: center;
     background-color: rgba(255, 235, 205, 0.9); /* Semi-transparent background */
-    border: 5px solid #ff69b4;
-    border-radius: 25px;
+    border: 5px solid #ff69b4; /* Border color */
+    border-radius: 25px; /* Rounded corners */
     padding: 20px;
-    width: 90%;
-    max-width: 700px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Responsive width */
+    max-width: 700px; /* Max width */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Shadow for depth */
     animation: fadeIn 1s ease-in-out; /* Entrance animation */
 }
 
 .question-box {
     background-color: #fffacd; /* Light yellow background */
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    animation: slideIn 1s ease-in-out; /* Animation for each question */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Padding around content */
+    margin-bottom: 20px; /* Spacing below the question box */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    animation: slideIn 1s ease-in-out; /* Animation for questions */
 }
 
 .character-img {
-    max-width: 150px; /* Increased image size */
-    margin-bottom: 10px;
+    max-width: 150px; /* Image size */
+    margin-bottom: 10px; /* Spacing below image */
     animation: bounce 1.5s infinite; /* Bouncing animation */
 }
 
 .question-text {
-    font-size: 1.8em;
-    color: #008b8b; /* Dark cyan */
+    font-size: 1.8em; /* Font size */
+    color: #008b8b; /* Dark cyan color */
 }
 
 .choices {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    display: flex; /* Flexbox for layout */
+    justify-content: center; /* Center choices */
+    gap: 20px; /* Space between choices */
 }
 
 .choice-btn {
     background-color: #32cd32; /* Lime green */
-    color: white;
-    border: none;
-    padding: 20px 40px;
-    font-size: 1.5em;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
+    color: white; /* Button text color */
+    border: none; /* No border */
+    padding: 20px 40px; /* Padding */
+    font-size: 1.5em; /* Font size */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: transform 0.2s; /* Scale transition */
 }
 
 .choice-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); /* Scale effect on hover */
 }
 
 .choice-btn:active {
-    background-color: #228b22; /* Darker green */
+    background-color: #228b22; /* Darker green on active */
 }
 
 .feedback {
-    font-size: 1.5em;
-    margin-top: 20px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    font-size: 1.5em; /* Font size */
+    margin-top: 20px; /* Spacing above feedback */
+    opacity: 0; /* Initial opacity */
+    transition: opacity 0.5s ease; /* Transition for fading */
 }
 
 .fadeOut {
-    opacity: 0;
+    opacity: 0; /* Fade out effect */
 }
 
 .game-end {
-    border: 2px solid #fff;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 400px;
-    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #fff; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding */
+    margin: 20px auto; /* Centering */
+    max-width: 400px; /* Max width */
+    background-color: rgba(0, 0, 0, 0.7); /* Background color */
 }
 
 .play-again-button {
     background-color: #ff69b4; /* Hot pink */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    border-radius: 5px;
-    cursor: pointer;
+    color: white; /* Button text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding */
+    font-size: 1.2em; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
 }
 
 .play-again-button:hover {
-    background-color: #ff1493; /* Deep pink */
+    background-color: #ff1493; /* Deep pink on hover */
 }
 
 .hidden {
-    display: none;
+    display: none; /* Hidden class */
 }
 
-/* Fade in effect for game container */
+/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-/* Slide in effect for questions */
 @keyframes slideIn {
     from { transform: translateX(-100%); }
     to { transform: translateX(0); }
 }
 
-/* Bounce effect for images */
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saad's Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function checkAnswer(selectedAnswer) {
+            const correctAnswer = "جمع"; // Saad's correct answer
+            const feedbackElement = document.getElementById("feedback");
+            const soundElement = document.getElementById("sound");
+            
+            if (selectedAnswer === correctAnswer) {
+                feedbackElement.textContent = "صحيح";
+                feedbackElement.style.color = "green";
+                soundElement.src = "sounds/correct.mp3";
+            } else {
+                feedbackElement.textContent = "خطاء";
+                feedbackElement.style.color = "red";
+                soundElement.src = "sounds/wrong.mp3";
+            }
+            
+            feedbackElement.style.opacity = 1;
+            soundElement.play();
+
+            // Redirect to Sara's game after 1 second
+            setTimeout(() => {
+                window.location.href = 'sara.html';
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <div class="title">مرحبا في لعبة سعد</div>
+    <div class="game-container">
+        <div class="question-box">
+            <img class="character-img" src="images/saad.png" alt="Saad Image">
+            <div class="question-text">جمع سعد 711، صدفة وجمع سعود 25 صدفة زيادة على سعد، فكم صدفة جمع سعود؟</div>
+        </div>
+        <div class="choices">
+            <button class="choice-btn" onclick="checkAnswer('جمع')">جمع</button>
+            <button class="choice-btn" onclick="checkAnswer('طرح')">طرح</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+    <audio id="sound" src=""></audio>
+</body>
+</html>

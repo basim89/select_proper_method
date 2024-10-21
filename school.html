@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School's Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function checkAnswer(selectedAnswer) {
+            const correctAnswer = "123"; // School's correct answer (800 - 677)
+            const feedbackElement = document.getElementById("feedback");
+            const soundElement = document.getElementById("sound");
+            
+            if (selectedAnswer === correctAnswer) {
+                feedbackElement.textContent = "صحيح";
+                feedbackElement.style.color = "green";
+                soundElement.src = "sounds/correct.mp3";
+            } else {
+                feedbackElement.textContent = "خطاء";
+                feedbackElement.style.color = "red";
+                soundElement.src = "sounds/wrong.mp3";
+            }
+            
+            feedbackElement.style.opacity = 1;
+            soundElement.play();
+        }
+    </script>
+</head>
+<body>
+    <div class="title">مرحبا في لعبة المدرسة</div>
+    <div class="game-container">
+        <div class="question-box">
+            <img class="character-img" src="images/school.png" alt="School Image">
+            <div class="question-text">وزع مدير المدرسة 677 بطاقة دعوة لحضور الحفل الختامي في المدرسة، فإذا كان عدد مقاعد الحفل 800 مقعد، فما عدد المقاعد المتبقية؟</div>
+        </div>
+        <div class="choices">
+            <button class="choice-btn" onclick="checkAnswer('123')">123</button>
+            <button class="choice-btn" onclick="checkAnswer('100')">100</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+    <audio id="sound" src=""></audio>
+</body>
+</html>
