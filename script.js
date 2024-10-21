@@ -1,16 +1,16 @@
 const questions = [
     {
-        img: "C:/Users/bloma/Desktop/select_proper_method/images/مدير.png",
+        img: "images/مدير.png", // Updated for GitHub
         text: 'وزعت المدرسة 677 بطاقة دعوة لحضور الحفل الختامي في المدرسة، فإذا كان عدد مقاعد الحفل 800 مقعد، فما عدد المقاعد المتبقية؟',
         correct: 'طرح'
     },
     {
-        img: "C:/Users/bloma/Desktop/select_proper_method/images/saad.png",
+        img: "images/saad.png", // Updated for GitHub
         text: 'جمع سعد 711 صدفة، وجمع سعود 25 صدفة زيادة على سعد، فكم صدفة جمع سعود؟',
         correct: 'جمع'
     },
     {
-        img: "C:/Users/bloma/Desktop/select_proper_method/images/sara.png",
+        img: "images/sara.png", // Updated for GitHub
         text: 'تحتاج سارة 225 طابع تذكاري جمعت حتى الآن 147 طابعًا، فكم طابعًا ينقصها؟',
         correct: 'طرح'
     }

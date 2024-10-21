@@ -1,6 +1,6 @@
 body {
     font-family: 'Cairo', sans-serif; /* Fallback font */
-    background: url('C:/Users/bloma/Desktop/select_proper_method/images/background.png') no-repeat center center fixed;
+    background: url('images/background.png') no-repeat center center fixed; /* Updated for GitHub */
     background-size: cover;
     display: flex;
     flex-direction: column; /* Added for vertical alignment */
@@ -130,5 +130,5 @@ body {
 /* Bounce effect for images */
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-10px); }  
 }
