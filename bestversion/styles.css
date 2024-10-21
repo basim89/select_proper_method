@@ -1,0 +1,90 @@
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background: url('C:/Users/bloma/Desktop/select_proper_method/images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    text-align: center;
+    background-color: rgba(255, 235, 205, 0.9); /* Semi-transparent background */
+    border: 5px solid #ff69b4;
+    border-radius: 25px;
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out; /* Entrance animation */
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #ff4500;
+}
+
+.question-box {
+    background-color: #fffacd;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-in-out; /* Animation for each question */
+}
+
+#character-img {
+    max-width: 150px; /* Increased image size */
+    margin-bottom: 10px;
+    animation: bounce 1.5s infinite; /* Bouncing animation */
+}
+
+p {
+    font-size: 1.8em;
+    color: #008b8b;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.choice-btn {
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.5em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.choice-btn:hover {
+    transform: scale(1.1);
+}
+
+.choice-btn:active {
+    background-color: #228b22;
+}
+
+/* Fade in effect for game container */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Slide in effect for questions */
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+/* Bounce effect for images */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
