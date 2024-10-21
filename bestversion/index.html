@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لعبة الاختيارات</title>
+    <title>Interactive Quiz Game</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400&display=swap" rel="stylesheet"> <!-- Added Cairo font for fallback -->
 </head>
 <body>
+    <h1 class="title">تصميم المعلم راع</h1> <!-- Title with styling -->
     <div class="game-container">
-        <h1>لعبة الأسئلة</h1>
-        
-        <div class="question-box">
-            <img id="character-img" src="C:/Users/bloma/Desktop/select_proper_method/images/مدير.png" alt="Character">
-            <p id="question-text">سؤال هنا</p>
+        <div class="question-box slideIn">
+            <img id="character-img" src="" alt="Character" class="character-img">
+            <p id="question-text" class="question-text"></p>
+            <div class="choices">
+                <button id="choice1" class="choice-btn">جمع</button>
+                <button id="choice2" class="choice-btn">طرح</button>
+            </div>
+            <div id="feedback" class="feedback"></div>
         </div>
-        
-        <div class="choices">
-            <button class="choice-btn" id="choice1">جمع</button>
-            <button class="choice-btn" id="choice2">طرح</button>
+        <div id="game-end" class="game-end hidden">
+            <p>انتهت اللعبة! هل ترغب في اللعب مرة أخرى؟</p>
+            <button id="play-again" class="play-again-button">نعم</button>
         </div>
-        
-        <audio id="correct-sound" src="C:/Users/bloma/Desktop/select_proper_method/sounds/correct.mp3"></audio>
-        <audio id="wrong-sound" src="C:/Users/bloma/Desktop/select_proper_method/sounds/wrong.mp3"></audio>
     </div>
-
+    <audio id="correct-sound" src="C:/Users/bloma/Desktop/select_proper_method/sounds/correct.mp3"></audio>
+    <audio id="wrong-sound" src="C:/Users/bloma/Desktop/select_proper_method/sounds/wrong.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,12 +1,23 @@
 body {
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: 'Cairo', sans-serif; /* Fallback font */
     background: url('C:/Users/bloma/Desktop/select_proper_method/images/background.png') no-repeat center center fixed;
     background-size: cover;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Added for vertical alignment */
+    align-items: center; /* Center content */
     height: 100vh;
     margin: 0;
+}
+
+.title {
+    font-size: 3em; /* Increased font size */
+    color: #ff4500; /* Title color */
+    margin-bottom: 20px; /* Spacing below the title */
+    background-color: #ffd700; /* Gold background color */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    font-family: 'Traditional Arabic', 'Cairo', sans-serif; /* Use خط الرقعة or fallback */
 }
 
 .game-container {
@@ -21,13 +32,8 @@ body {
     animation: fadeIn 1s ease-in-out; /* Entrance animation */
 }
 
-h1 {
-    font-size: 2.5em;
-    color: #ff4500;
-}
-
 .question-box {
-    background-color: #fffacd;
+    background-color: #fffacd; /* Light yellow background */
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
@@ -35,15 +41,15 @@ h1 {
     animation: slideIn 1s ease-in-out; /* Animation for each question */
 }
 
-#character-img {
+.character-img {
     max-width: 150px; /* Increased image size */
     margin-bottom: 10px;
     animation: bounce 1.5s infinite; /* Bouncing animation */
 }
 
-p {
+.question-text {
     font-size: 1.8em;
-    color: #008b8b;
+    color: #008b8b; /* Dark cyan */
 }
 
 .choices {
@@ -53,7 +59,7 @@ p {
 }
 
 .choice-btn {
-    background-color: #32cd32;
+    background-color: #32cd32; /* Lime green */
     color: white;
     border: none;
     padding: 20px 40px;
@@ -68,7 +74,45 @@ p {
 }
 
 .choice-btn:active {
-    background-color: #228b22;
+    background-color: #228b22; /* Darker green */
+}
+
+.feedback {
+    font-size: 1.5em;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.fadeOut {
+    opacity: 0;
+}
+
+.game-end {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.play-again-button {
+    background-color: #ff69b4; /* Hot pink */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.play-again-button:hover {
+    background-color: #ff1493; /* Deep pink */
+}
+
+.hidden {
+    display: none;
 }
 
 /* Fade in effect for game container */

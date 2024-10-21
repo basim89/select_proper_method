@@ -1,23 +1,12 @@
 body {
-    font-family: 'Cairo', sans-serif; /* Fallback font */
-    background: url('images/background.png') no-repeat center center fixed; /* Updated for GitHub */
+    font-family: 'Comic Sans MS', sans-serif;
+    background: url('C:/Users/bloma/Desktop/select_proper_method/images/background.png') no-repeat center center fixed;
     background-size: cover;
     display: flex;
-    flex-direction: column; /* Added for vertical alignment */
-    align-items: center; /* Center content */
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     margin: 0;
-}
-
-.title {
-    font-size: 3em; /* Increased font size */
-    color: #ff4500; /* Title color */
-    margin-bottom: 20px; /* Spacing below the title */
-    background-color: #ffd700; /* Gold background color */
-    padding: 10px 20px; /* Padding around the text */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
-    font-family: 'Traditional Arabic', 'Cairo', sans-serif; /* Use خط الرقعة or fallback */
 }
 
 .game-container {
@@ -130,5 +119,5 @@ body {
 /* Bounce effect for images */
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }  
+    50% { transform: translateY(-10px); }
 }

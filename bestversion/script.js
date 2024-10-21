@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('choice1').addEventListener('click', () => checkAnswer('جمع'));
     document.getElementById('choice2').addEventListener('click', () => checkAnswer('طرح'));
+    document.getElementById('play-again').addEventListener('click', () => {
+        currentQuestion = 0;
+        document.getElementById('game-end').classList.add('hidden');
+        loadQuestion();
+    });
 });
 
 function loadQuestion() {
@@ -41,27 +46,45 @@ function loadQuestion() {
         // Slide in new question
         questionBox.classList.remove('slideOut');
         questionBox.classList.add('slideIn');
+        
+        // Clear feedback message
+        document.getElementById('feedback').textContent = '';
+        document.getElementById('feedback').style.opacity = 0; // Set opacity to 0
     }, 500); // Delay matches animation duration
 }
 
 function checkAnswer(answer) {
     const correctSound = document.getElementById('correct-sound');
     const wrongSound = document.getElementById('wrong-sound');
+    const feedback = document.getElementById('feedback');
     
     if (answer === questions[currentQuestion].correct) {
         correctSound.play();
-        alert('إجابة صحيحة!');
+        feedback.textContent = 'إجابة صحيحة!'; // Display feedback
+        feedback.style.color = 'green'; // Set feedback color
     } else {
         wrongSound.play();
-        alert('إجابة خاطئة!');
+        feedback.textContent = 'إجابة خاطئة!'; // Display feedback
+        feedback.style.color = 'red'; // Set feedback color
     }
 
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
-        loadQuestion();
-    } else {
-        alert('انتهت اللعبة!');
-        currentQuestion = 0;
-        loadQuestion();
-    }
+    feedback.style.opacity = 1; // Set opacity to 1 for visibility
+    feedback.classList.remove('fadeOut'); // Ensure fadeOut class is removed
+
+    // Fade out the feedback after 1.5 seconds
+    setTimeout(() => {
+        feedback.classList.add('fadeOut'); // Add fadeOut class
+        feedback.style.opacity = 0; // Fade out the feedback
+
+        // Wait for 1 second before loading the next question
+        setTimeout(() => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                // Show game end message
+                document.getElementById('game-end').classList.remove('hidden');
+            }
+        }, 1000); // Delay before loading the next question
+    }, 1500); // Delay for feedback visibility
 }
