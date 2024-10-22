@@ -1,74 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عداد أ/سعاد الرحيلي</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
-    <script src="quiz.js" defer></script> <!-- Include your JavaScript file -->
+    <title>اختبار معلوماتك</title>
     <style>
-        /* Include your CSS here */
+        /* CSS Styles (unchanged) */
         body {
-            font-family: 'خط الرقعة', ; 
+            font-family: 'خط الرقعة';
             background: url('images/background.png') no-repeat center center fixed;
             background-size: cover;
             display: flex;
-            flex-direction: column; 
-            align-items: center; 
+            flex-direction: column;
+            align-items: center;
             height: 100vh;
             margin: 0;
         }
         .title {
-            font-family: 'خط الرقعة',;
-            src: url('font/ArefRuqaa-Bold-1.ttf') format('truetype');
+            font-family: 'خط الرقعة';
             font-weight: normal;
-            font-style: normal;
-            font-size: 3em; 
-            color: #ff4500; 
-            margin-bottom: 20px; 
-            background-color: #ffd700; 
-            padding: 10px 20px; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+            font-size: 2.5em;
+            color: #ff4500;
+            margin-bottom: 1px;
+            background-color: #ffd700;
+            padding: 1px 2px;
+            border-radius: 1px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .title2 {
+            font-family: 'Khediawy', 'خط الرقعة', sans-serif;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 3em;
+            color: #fdfdfd;
+            margin-bottom: 1px;
+            background-color: #ff0000;
+            padding: 20px 30px;
+            border-radius: 500px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         .game-container {
             text-align: center;
-            background-color: rgba(255, 235, 205, 0.9); 
-            border: 5px solid #ff69b4;
-            border-radius: 25px;
+            background-color: rgba(255, 235, 205, 0.9);
+            border: 50px solid #ff69b4;
+            border-radius: 90px;
             padding: 20px;
-            width: 90%;
-            max-width: 700px;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out; 
+            width: 80%;
+            max-width: 900px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); 
         }
         .question-box {
-            background-color: #fffacd; 
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
+            background-color: #f2cdff;
+            border-radius: 50px;
+            padding: 2px;
+            margin-bottom: 2px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
         .character-img {
-            max-width: 150px; 
-            margin-bottom: 10px;
-        }
+    max-width: 320px;
+    margin-bottom: 10px;
+    border-radius: 60px; /* Slightly larger rounded corners */
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3); /* Stronger shadow effect */
+    display: block;
+    margin: 20px auto;
+    border: 20px solid #0fd5ef; /* Adds a decorative border */
+    padding: 5px; /* Adds a small padding around the image */
+}
         .question-text {
-            font-size: 1.8em;
-            color: #008b8b; 
+            font-size: 1.5em;
+            color: #008b8b;
         }
         .choices {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 300px;
         }
         .choice-btn {
-            background-color: #32cd32; 
-            color: white;
+            background-color: #cb2222;
+            color: rgb(0, 0, 0);
             border: none;
-            padding: 20px 40px;
-            font-size: 1.5em;
-            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 30px;
             cursor: pointer;
             transition: transform 0.2s;
         }
@@ -76,10 +92,18 @@
             transform: scale(1.1);
         }
         .feedback {
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin-top: 20px;
             opacity: 0;
             transition: opacity 0.5s ease;
+        }
+        .correct-feedback {
+            color: green;
+            font-weight: bold;
+        }
+        .wrong-feedback {
+            color: red;
+            font-weight: bold;
         }
         .progress-bar {
             width: 100%;
@@ -87,32 +111,96 @@
             border-radius: 5px;
             overflow: hidden;
             margin-top: 20px;
+            display: flex; /* Added for flexbox */
+            flex-direction: row-reverse; /* Fills from right to left */
         }
         .progress {
             height: 20px;
-            background-color: #4caf50; /* Green */
+            background-color: #4caf50;
             width: 0;
-            transition: width 1s ease; /* Animate width change */
+            transition: width 1s ease;
         }
         .counters {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
             margin-top: 20px;
-            font-size: 1.5em;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .correct-count, .wrong-count {
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 1.2em;
+            width: 45%;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .correct-count {
+            background-color: #90ee90; /* Light green */
+            color: black;
+            border: 2px solid #4caf50; /* Dark green */
+        }
+        .wrong-count {
+            background-color: #ffcccb; /* Light red */
+            color: black;
+            border: 2px solid #f44336; /* Dark red */
         }
     </style>
+    <script>
+        let correctCount = 0;
+        let wrongCount = 0;
+        let currentQuestion = 1;
+
+        // Audio elements
+        const correctSound = new Audio('sounds/correct.mp3');
+        const wrongSound = new Audio('sounds/wrong.mp3');
+
+        function checkAnswer(questionNumber, answer, feedbackElement, progressElement, correctCounter, wrongCounter) {
+            let correctAnswer;
+            if (questionNumber === 1) correctAnswer = 'طرح';
+            else if (questionNumber === 2) correctAnswer = 'طرح';
+            else if (questionNumber === 3) correctAnswer = 'جمع';
+
+            if (answer === correctAnswer) {
+                correctCount++;
+                feedbackElement.innerHTML = '<span class="correct-feedback">إجابة صحيحة!</span>';
+                correctSound.play(); // Play correct sound
+            } else {
+                wrongCount++;
+                feedbackElement.innerHTML = '<span class="wrong-feedback">إجابة خاطئة!</span>';
+                wrongSound.play(); // Play wrong sound
+            }
+
+            correctCounter.innerHTML = correctCount;
+            wrongCounter.innerHTML = wrongCount;
+
+            feedbackElement.style.opacity = 1;
+            progressElement.style.width = `${((correctCount + wrongCount) / 3) * 100}%`;
+
+            setTimeout(nextQuestion, 2000);
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < 3) {
+                document.getElementById(`question${currentQuestion}`).style.display = 'none';
+                currentQuestion++;
+                document.getElementById(`question${currentQuestion}`).style.display = 'block';
+            } else {
+                document.getElementById('nextButton').style.display = 'none';
+                document.getElementById('progress').style.width = '100%'; // Complete the progress bar
+            }
+        }
+    </script>
 </head>
 <body>
 
     <div class="game-container">
         <h1 class="title">عداد أ/سعاد الرحيلي</h1>
+        <h1 class="title2">اختاري طريقة الحل الصحيحية</h1>
         
         <!-- Question 1 -->
         <div id="question1" class="question-box">
             <img src="images/saad.png" alt="سعد" class="character-img">
-            <div class="question-text">جمع سعد 711، صدفة وجمع سعود 25 صدفة زيادة على سعد ، فكم صدفة جمع سعود؟</div>
+            <div class="question-text">مَعَ أَحْمَدَ ٨ مجلَّاتٍ تَعْليمِيَّةِ. أَعَارَ صَديقَهُ ٣ مجلَّاتٍ مِنْهَا، فكَمْ مجلَّةَ بَقِيَتْ مَعَهُ؟</div>
             <div class="choices">
                 <button class="choice-btn" onclick="checkAnswer(1, 'جمع', document.getElementById('feedback1'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">جمع</button>
                 <button class="choice-btn" onclick="checkAnswer(1, 'طرح', document.getElementById('feedback1'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">طرح</button>
@@ -125,112 +213,35 @@
             <img src="images/مدير.png" alt="مدير المدرسة" class="character-img">
             <div class="question-text">وزع مدير المدرسة 677 بطاقة دعوة لحضور الحفل الختامي في المدرسة ، فإذا كان عدد مقاعد الحفل 800 مقعد، فما عدد المقاد المتبقية؟</div>
             <div class="choices">
-                <button class="choice-btn" onclick="checkAnswer(2, '123', document.getElementById('feedback2'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">123</button>
-                <button class="choice-btn" onclick="checkAnswer(2, '100', document.getElementById('feedback2'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">100</button>
+                <button class="choice-btn" onclick="checkAnswer(2, 'طرح', document.getElementById('feedback2'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">طرح</button>
+                <button class="choice-btn" onclick="checkAnswer(2, 'جمع', document.getElementById('feedback2'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">جمع</button>
             </div>
             <div id="feedback2" class="feedback"></div>
         </div>
 
         <!-- Question 3 -->
         <div id="question3" class="question-box" style="display: none;">
-            <img src="images/sara.png" alt="سارة" class="character-img">
-            <div class="question-text">تحتاج سارة 225 طابع، تذكاري جمعت حتى الآن 147، طابعًا فكم طابعًا ينقصها؟</div>
+            <img src="images/سعود.png" alt="سعود" class="character-img">
+            <div class="question-text">عَلَى إحْدى طُرُقِ السَّيّاراتِ، عَذَّ سَعِيدٌ
+                ١٢٥ سيّارَةً. وَعَدَّ مُحَمَّدٌ ٦٧ سَيّارَةً. كَمْ يَزيدُ
+                عَدَدُ السَّيّاراتِ الَّتِي عَدَّها سَعيدٌ عَلَى الَّتِي
+                عَدَّها مُحَمَّدٌ؟</div>
             <div class="choices">
-                <button class="choice-btn" onclick="checkAnswer(3, '78', document.getElementById('feedback3'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">78</button>
-                <button class="choice-btn" onclick="checkAnswer(3, '80', document.getElementById('feedback3'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">80</button>
+                <button class="choice-btn" onclick="checkAnswer(3, 'طرح', document.getElementById('feedback3'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">طرح</button>
+                <button class="choice-btn" onclick="checkAnswer(3, 'جمع', document.getElementById('feedback3'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">جمع</button>
             </div>
             <div id="feedback3" class="feedback"></div>
         </div>
 
-        <!-- Progress Bar -->
         <div class="progress-bar">
             <div id="progress" class="progress"></div>
         </div>
-        
-        <!-- Counters -->
         <div class="counters">
-            <p>الإجابات الصحيحة: <span id="correctCount">0</span></p>
-            <p>الإجابات الخاطئة: <span id="wrongCount">0</span></p>
+            <div class="correct-count">الإجابات الصحيحة: <span id="correctCount">0</span></div>
+            <div class="wrong-count">الإجابات الخاطئة: <span id="wrongCount">0</span></div>
         </div>
+        <button id="nextButton" class="choice-btn" onclick="nextQuestion()" style="display: none;">التالي</button>
     </div>
 
-    <audio id="correctSound" src="sounds/correct.mp3"></audio>
-    <audio id="wrongSound" src="sounds/wrong.mp3"></audio>
-
-    <script>
-        let correctAnswers = 0;
-        let wrongAnswers = 0;
-
-        function checkAnswer(questionNumber, choice, feedbackElement, progressElement, correctCountElement, wrongCountElement) {
-            let isCorrect = false;
-
-            // Check the correct answer based on question number
-            if (questionNumber === 1 && choice === 'جمع') {
-                isCorrect = true;
-            } else if (questionNumber === 2 && choice === '123') {
-                isCorrect = true;
-            } else if (questionNumber === 3 && choice === '78') {
-                isCorrect = true;
-            }
-
-            // Provide feedback
-            if (isCorrect) {
-                document.getElementById('correctSound').play();
-                feedbackElement.textContent = "صحيح!";
-                feedbackElement.style.color = "green"; 
-                correctAnswers++;
-                correctCountElement.textContent = correctAnswers; 
-
-                // Animate progress bar
-                let newWidth = (correctAnswers / 3) * 100; 
-                progressElement.style.width = newWidth + '%'; 
-                progressElement.style.transition = 'width 1s ease'; 
-
-                // Move to the next question
-                setTimeout(() => {
-                    if (questionNumber < 3) {
-                        document.getElementById(`question${questionNumber}`).style.display = "none";
-                        document.getElementById(`question${questionNumber + 1}`).style.display = "block";
-                    } else {
-                        showFinalResults();
-                    }
-                }, 2000);
-            } else {
-                document.getElementById('wrongSound').play();
-                feedbackElement.textContent = "خاطئ!";
-                feedbackElement.style.color = "red"; 
-                wrongAnswers++;
-                wrongCountElement.textContent = wrongAnswers; 
-            }
-            feedbackElement.style.opacity = 1; 
-
-            // Hide feedback after a short delay
-            setTimeout(() => {
-                feedbackElement.style.opacity = 0; 
-            }, 2000);
-        }
-
-        function showFinalResults() {
-            // Hide all questions
-            for (let i = 1; i <= 3; i++) {
-                document.getElementById(`question${i}`).style.display = "none";
-            }
-
-            // Display results
-            let resultsDiv = document.createElement('div');
-            resultsDiv.className = 'results';
-            resultsDiv.innerHTML = `
-                <h2>انتهى الاختبار!</h2>
-                <p>الإجابات الصحيحة: ${correctAnswers}</p>
-                <p>الإجابات الخاطئة: ${wrongAnswers}</p>
-            `;
-            document.querySelector('.game-container').appendChild(resultsDiv);
-        }
-
-        // Show the first question
-        window.onload = () => {
-            document.getElementById('question1').style.display = 'block';
-        };
-    </script>
 </body>
 </html>
