@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>اختبار معلوماتك</title>
     <style>
-        /* CSS Styles (unchanged) */
-        body {
+        /* CSS Styles (unchanged) */ @font-face {
             font-family: 'خط الرقعة';
+            src: url('font/ArefRuqaa-Bold-1.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'خط الرقة';
             background: url('images/background.png') no-repeat center center fixed;
             background-size: cover;
             display: flex;
@@ -20,21 +25,21 @@
             font-family: 'خط الرقعة';
             font-weight: normal;
             font-size: 2.5em;
-            color: #ff4500;
+            color:#ff6347; 
             margin-bottom: 1px;
-            background-color: #ffd700;
+            background-color: #f4eaf5;
             padding: 1px 2px;
-            border-radius: 1px;
+            border-radius: 60px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         .title2 {
-            font-family: 'Khediawy', 'خط الرقعة', sans-serif;
+            font-family: 'Khediawy', 'خط الرقeعة', sans-serif;
             font-weight: bold;
             font-style: italic;
             font-size: 3em;
-            color: #fdfdfd;
+            color: #ff6347; 
             margin-bottom: 1px;
-            background-color: #ea97bd;
+            background-color: rgba(255, 235, 205, 0.9);;
             padding: 20px 30px;
             border-radius: 500px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
@@ -45,7 +50,7 @@
         .game-container {
             text-align: center;
             background-color: rgba(255, 235, 205, 0.9);
-            border: 50px solid #ff69b4;
+            border: 50px solid rgba(170, 0, 255, 0.9)d;
             border-radius: 90px;
             padding: 20px;
             width: 80%;
@@ -53,7 +58,7 @@
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); 
         }
         .question-box {
-            background-color: #f2cdff;
+            background-color: rgba(255, 235, 205, 0.9);
             border-radius: 50px;
             padding: 2px;
             margin-bottom: 2px;
@@ -66,7 +71,16 @@
     box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3); /* Stronger shadow effect */
     display: block;
     margin: 20px auto;
-    border: 20px solid #ea97bd; /* Adds a decorative border */
+    border: 9px solid #ff6347; /* Adds a decorative border */
+    padding: 5px; /* Adds a small padding around the image */
+}.character-img2 {
+    max-width: 400px;
+    margin-bottom: 10px;
+    border-radius: 60px; /* Slightly larger rounded corners */
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3); /* Stronger shadow effect */
+    display: block;
+    margin: 20px auto;
+    border: 9px solid#ff6347;  /* Adds a decorative border */
     padding: 5px; /* Adds a small padding around the image */
 }
         .question-text {
@@ -79,7 +93,7 @@
             gap: 300px;
         }
         .choice-btn {
-            background-color: #ea97bd;
+            background-color: #b6ab8a;
             color: rgb(0, 0, 0);
             border: none;
             padding: 30px 60px;
@@ -157,8 +171,8 @@
         function checkAnswer(questionNumber, answer, feedbackElement, progressElement, correctCounter, wrongCounter) {
             let correctAnswer;
             if (questionNumber === 1) correctAnswer = 'طرح';
-            else if (questionNumber === 2) correctAnswer = 'طرح';
-            else if (questionNumber === 3) correctAnswer = 'جمع';
+            else if (questionNumber === 2) correctAnswer = 'جمع';
+            else if (questionNumber === 3) correctAnswer = 'طرح';
 
             if (answer === correctAnswer) {
                 correctCount++;
@@ -210,8 +224,8 @@
 
         <!-- Question 2 -->
         <div id="question2" class="question-box" style="display: none;">
-            <img src="images/مدير.png" alt="مدير المدرسة" class="character-img">
-            <div class="question-text">وزع مدير المدرسة 677 بطاقة دعوة لحضور الحفل الختامي في المدرسة ، فإذا كان عدد مقاعد الحفل 800 مقعد، فما عدد المقاد المتبقية؟</div>
+            <img src="images/مدير.png" alt="مدير المدرسة" class="character-img2">
+            <div class="question-text"> يُظْهرُ الجَدْوَلَ اعلاه عَدَدَ المُلْصَقَاتِ التَّشْجِيعِيَّةِ الَّتِي حَصَلَ عَلَيْها ثَلاَثَةُ طُلَّابِ، فَمَا الْعَدَدُ الْكُلِّيُّ للمُلْصَقَاتِ الَّتِي حَصَلَ عَلَيْهَا وائِلٌ وَخَالِدٌ مَعًا؟</div>
             <div class="choices">
                 <button class="choice-btn" onclick="checkAnswer(2, 'طرح', document.getElementById('feedback2'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">طرح</button>
                 <button class="choice-btn" onclick="checkAnswer(2, 'جمع', document.getElementById('feedback2'), document.getElementById('progress'), document.getElementById('correctCount'), document.getElementById('wrongCount'))">جمع</button>
